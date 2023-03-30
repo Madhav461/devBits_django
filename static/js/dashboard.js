@@ -2,10 +2,6 @@
 
 const o = React.createElement;
 
-
-
-
-
 class LikeButton extends React.Component {
 
     constructor(props) {
@@ -42,10 +38,10 @@ class LikeButton extends React.Component {
           query:p,
         }
         )
-        console.log("NEW QUERY");
-        console.log(this.state.query);
+        console.log("NEW QUERY: ",this.state.query);
+
         this.fetchdata();
-        this.forceUpdate();
+
 
         
       }
@@ -70,6 +66,7 @@ class LikeButton extends React.Component {
               
               
             )
+
           })
           .catch(error => {
             this.setState({ ...this.state,error:error,loaded:false});
