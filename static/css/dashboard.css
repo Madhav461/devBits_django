@@ -1,10 +1,52 @@
-body{
-    background-color: rgb(201, 43, 43);
-}
-h1{
-    text-decoration: line-through;
 
+
+body{
+    background: rgb(54,217,182);
+    background: linear-gradient(90deg, rgba(54,217,182,1) 0%, rgba(32,152,126,1) 43%, rgba(0,212,255,1) 100%);
+  }
+
+  h1, h2, h3, h4, h5, p, span, strike{
+    font-family: 'Montserrat', sans-serif;
+  
+  }
+  #karri{
+    text-align: center;
+    color:rgb(200, 206, 216)
+  }
+
+  #loading{
+    text-align: center;
+
+  }
+#mftitles{
+    display: flex;
 }
-#karri{
-    color: rgb(248, 237, 237);
+#mfdata{
+    display: flex;
+}
+
+#cryptotitles{
+    display: flex;
+}
+#cryptodata{
+    display: flex;
+}
+
+
+
+#stockstitles{
+    display: flex;
+}
+#stocksdata{
+    display: flex;
+}
+
+#userdashboarddata{
+  display: flex;
+}
+#userdashboarditems{
+  margin-left: 20px;
+}
+#userdashboarditems2{
+  margin-left: 30px;
 }
