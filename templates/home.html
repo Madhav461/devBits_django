@@ -19,6 +19,24 @@
     
     <h1 id="karri">Home Page</h1>
     <a href="{% url 'logout' %}" >Logout</a>
+    <div id="HomepageDiv"></div>
+
+  
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <script type="text/javascript" src="./Dashboard.js" ></script> -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="{% static 'react/react.development.js' %}"></script>
+    <script src="{% static 'react/react-dom.development.js' %}"></script>
+    <!-- JSX support-->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="{% static 'react/babel.min.js' %}"></script>
+    <script src="{% static 'js/dashboard.js' %}" type="text/babel"></script>
     
     
   
