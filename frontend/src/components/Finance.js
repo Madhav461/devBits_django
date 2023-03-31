@@ -1,5 +1,5 @@
 import {useState,useEffect} from "react";
-
+import styles,{layout} from "../style";
 
 
 const  Finance=()=>{
@@ -116,9 +116,9 @@ useEffect(() => {
     return(
         <div className="">
             <a href="/home">
-            <h1 className="text-3xl text-white">STOCKS LIST: </h1>
-            <h1 className="text-xl text-stone-300">To make stock exchange or get detailed review Get Registered</h1>
-            <div className="flex">
+            <h1 className={`text-3xl ${styles.heading2}  bg-dimBlue  text-gradient`}>STOCKS LIST: </h1>
+            <h1 className="text-xl  bg-dimBlue text-stone-300">To make stock exchange or get detailed review Get Registered</h1>
+            <div className="flex  bg-dimBlue">
             <h1 className="text-xl text-white ml-[2%]">SYMBOL: </h1>
             
             <h1 className="text-xl text-white ml-[10%]">COMPANY NAME: </h1>
@@ -129,71 +129,71 @@ useEffect(() => {
             
             </div>
             
-            <div className="flex">
+            <div className="flex  bg-dimBlue ">
 
             <ul className="ml-[2%]">
                 {stockdata.map((nav) => (
-                <h1 className="text-white"> {nav.mic_code}</h1>
+                <h1 className="text-gradient"> {nav.mic_code}</h1>
                 ))}
             </ul>
 
             
             <ul className="ml-[10%]">
                 {stockdata.map((nav) => (
-                <h1 className="text-white"> {nav.name}</h1>
+                <h1 className="text-gradient"> {nav.name}</h1>
                 ))}
             </ul>
 
 
             <ul className="ml-[10%]">
                 {stockdata.map((nav) => (
-                <h1 className="text-white"> {nav.type}</h1>
+                <h1 className="text-gradient"> {nav.type}</h1>
                 ))}
             </ul>
             </div>
             <br></br>
             <br></br>
 
-            <h1 className="text-3xl text-white">CRYPTO LIST: </h1>
-            <h1 className="text-xl text-stone-300">To make CRYPTO exchange or get detailed DATA Get Registered</h1>
-            <div className="flex">
-            <h1 className="text-xl text-white ml-[2%]">SYMBOL: </h1>
+            <h1 className={`text-3xl  bg-dimBlue ${styles.heading2} text-gradient`}>CRYPTO LIST: </h1>
+            <h1 className="text-xl  bg-dimBlue text-stone-300">To make CRYPTO exchange or get detailed DATA Get Registered</h1>
+            <div className="  bg-dimBlue flex">
+            <h1 className="text-xl   text-white ml-[2%]">SYMBOL: </h1>
             
-            <h1 className="text-xl text-white ml-[10%]">CRYPTO BASE: </h1>
+            <h1 className="text-xl  text-white ml-[10%]">CRYPTO BASE: </h1>
             
            
 
-            <h1 className="text-xl text-white ml-[10%]">CRYPTO QUOTE:</h1>
+            <h1 className="text-xl   text-white ml-[10%]">CRYPTO QUOTE:</h1>
             
             </div>
             
-            <div className="flex">
+            <div className="flex  bg-dimBlue">
 
             <ul className="ml-[2%]">
                 {cryptodata.map((nav) => (
-                <h1 className="text-white"> {nav.symbol}</h1>
+                <h1 className="text-gradient"> {nav.symbol}</h1>
                 ))}
             </ul>
 
             
             <ul className="2xl:ml-[10%] ml-[12%]">
                 {cryptodata.map((nav) => (
-                <h1 className="text-white"> {nav.currency_base}</h1>
+                <h1 className="text-gradient"> {nav.currency_base}</h1>
                 ))}
             </ul>
 
 
             <ul className="2xl:ml-[30%] ml-[14%]">
                 {cryptodata.map((nav) => (
-                <h1 className="text-white"> {nav.currency_quote}</h1>
+                <h1 className="text-gradient"> {nav.currency_quote}</h1>
                 ))}
             </ul>
             </div>
             <br></br>
             <br></br>
-            <h1 className="text-3xl text-white">MUTUAL FUNDS LIST: </h1>
-            <h1 className="text-xl text-stone-300">To make MUTUAL FUNDS exchange or get detailed DATA Get Registered</h1>
-            <div className="flex">
+            <h1 className={`text-3xl ${styles.heading2}  bg-dimBlue text-gradient`}>MUTUAL FUNDS LIST: </h1>
+            <h1 className="text-xl  bg-dimBlue text-stone-300">To make MUTUAL FUNDS exchange or get detailed DATA Get Registered</h1>
+            <div className="flex  bg-dimBlue">
             <h1 className="text-xl text-white ml-[2%]">SYMBOL: </h1>
             
             <h1 className="text-xl text-white ml-[6%]">MUTUAL FUNDS NAME: </h1>
@@ -205,25 +205,25 @@ useEffect(() => {
             
             </div>
             
-            <div className="flex">
+            <div  className={`flex  bg-dimBlue`}>
 
             <ul className="ml-[2%]">
                 {mfdata.map((nav) => (
-                <h1 className="text-white"> {nav.symbol}</h1>
+                <h1 className="text-gradient"> {nav.symbol}</h1>
                 ))}
             </ul>
 
             
             <ul className="2xl:ml-[6%] ml-[4%]">
                 {mfdata.map((nav) => (
-                <h1 className="text-white"> {nav.name}</h1>
+                <h1 className="text-gradient"> {nav.name}</h1>
                 ))}
             </ul>
 
 
             <ul className="2xl:ml-[30%] ml-[10%]">
                 {mfdata.map((nav) => (
-                <h1 className="text-white"> {nav.currency}</h1>
+                <h1 className="text-gradient"> {nav.currency}</h1>
                 ))}
             </ul>
 

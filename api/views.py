@@ -67,6 +67,8 @@ from .serializers import TaskSerializer
 
 @login_required(login_url='login')
 def Homepage(request):
+    if request.method=='GET':
+        symbol=request.GET.get('symbol')
     return render(request,'home.html')
 
 def Loginpage(request):

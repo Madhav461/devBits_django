@@ -7,7 +7,7 @@ class LikeButton extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          newdata:"",
+          newdata:"AAT",
           tsdata:[],
           query:"AAT",
           loaded:false,
@@ -35,12 +35,11 @@ class LikeButton extends React.Component {
 
         this.setState({
           ...this.state,
-          query:p,
+          query:this.state.newdata,
         }
         )
-        console.log("NEW QUERY: ",this.state.query);
-
         this.fetchdata();
+        
 
 
         
@@ -54,7 +53,7 @@ class LikeButton extends React.Component {
 
 
       fetchdata(){
-        fetch(`https://api.twelvedata.com/time_series?symbol=${this.state.query}&interval=1min&apikey=4e444c14174747a9a3817ddcd5b050f6`)
+        fetch(`https://api.twelvedata.com/time_series?symbol=${this.state.newdata}&interval=1min&apikey=4e444c14174747a9a3817ddcd5b050f6`)
           .then(response => response.json())
           .then(data => {
             
@@ -63,9 +62,16 @@ class LikeButton extends React.Component {
                 ...this.state,loaded:true,
                 tsdata:data,
             }
+            
               
               
             )
+            if(this.state.tsdata.status!=='ok'){
+              this.setState({ ...this.state,error:error,loaded:false});
+            console.log("LATEST ERROR!!",error);
+            }
+            
+            
 
           })
           .catch(error => {
@@ -86,7 +92,8 @@ class LikeButton extends React.Component {
     if(!this.state.loaded){
       return(
         <div>
-        <h1>ERROR IN FETCHING DATA</h1>
+        <h1>LOADING!!</h1>
+
       </div>
       )
     }
@@ -106,7 +113,7 @@ class LikeButton extends React.Component {
                         <input type="text" className="search-box ml-[3%] border-spacing-1 " placeholder="STOCK SYMBOL.." onChange={e => this.setState({...this.state,newdata:e.target.value}) }
                         ></input>
                         <button className="bg-white  ml-[7%] pr-[1%] pl-[1%] rounded-xl" onClick={this.handleSubmit} > Submit</button>
-
+                         
 
 
                             <h1>STOCK DETAILS:</h1>
@@ -125,6 +132,8 @@ class LikeButton extends React.Component {
                             <h3>
                               TYPE:{this.state.tsdata.meta.type}
                             </h3>
+                            <button>BUY</button>
+                            <button>SELL</button>
 
                             <div id="userdashboarddata">
                                     <h4 id="userdashboarditems2">DATE & TIME:</h4>
