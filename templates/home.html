@@ -19,13 +19,25 @@
   </head>
   <body>
     
+    <h1 id="karri">Home Page</h1>
     <div class="title">
-      <h1 id="karri">Home Page</h1>
-    <Button><a href="{% url 'logout' %}" >Logout</a></Button>
-    <Button><a href="{% url 'home' %}">RELOAD</a></Button>
+      
+      <Button><a href="{% url 'logout' %}" >Logout</a></Button>
+      <Button><a href="{% url 'home' %}">RELOAD</a></Button>
     </div>
 
-   
+    <div class="accountdetails">
+      <h2 style="align-content: center;">Hey {{username}} !</h2>
+    <h3 style="align-content: center;">Your Profile</h3>
+    <h4>Bank Balance: {{money}}</h4>
+    <h4>Stocks bought: </h4>
+    <ul>
+      {% for stock in stocks %}
+      <li>{{stock.name}} {{stock.quantity}}</li>
+      {% endfor %}
+    </ul>
+    </div>
+
 
     <div id="like_button_container"></div>
 

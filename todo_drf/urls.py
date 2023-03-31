@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
 from api import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('signup/',views.Signuppage,name='signup'),
@@ -25,4 +26,7 @@ urlpatterns = [
     path('logout/',views.Logoutpage,name='logout'),
     path('api/', include('api.urls')),
     path('',TemplateView.as_view(template_name='index.html')),
+    path('buy/<int:quantity>/<slug:stockname>/<int:stockprice>',views.Buy,name='buy'),
+    path('purchasefailed/',views.Purchasefailed,name='purchasefailed'),
+    path('sell/<slug:stockname>',views.Sell,name='sell')
 ]

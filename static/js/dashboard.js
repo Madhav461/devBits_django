@@ -1,4 +1,4 @@
- 'use strict';
+'use strict';
 
 const o = React.createElement;
 
@@ -12,7 +12,8 @@ class LikeButton extends React.Component {
           query:"AAT",
           loaded:false,
           err:null,
-
+          quantity:0,
+          stocktosell:"",
         };
         this.fetchdata=this.fetchdata.bind(this)
         // this.handleChange=this.handleChange.bind(this)
@@ -81,12 +82,12 @@ class LikeButton extends React.Component {
 
           
 
-          
+          // let stockname= this.state.tsdata.meta.symbol;
+          // console.log(stockname)
 
          
 
-      }
-      
+      } 
 
   render() {
     if(!this.state.loaded){
@@ -110,9 +111,10 @@ class LikeButton extends React.Component {
       return (
         <div className="bg-neutral-900 flex pt-[5px]">
                     <h1 className="sm:text-[26px] text-[20px] font-poppins  text-white"> Search : </h1>
-                        <input type="text" className="search-box ml-[3%] border-spacing-1 " placeholder="STOCK SYMBOL.." onChange={e => this.setState({...this.state,newdata:e.target.value}) }
-                        ></input>
+                        <input type="text" className="search-box ml-[3%] border-spacing-1 " placeholder="STOCK SYMBOL.." onChange={e => this.setState({...this.state,newdata:e.target.value,loaded:true}) }></input>
+
                         <button className="bg-white  ml-[7%] pr-[1%] pl-[1%] rounded-xl" onClick={this.handleSubmit} > Submit</button>
+
                          
 
 
@@ -132,8 +134,13 @@ class LikeButton extends React.Component {
                             <h3>
                               TYPE:{this.state.tsdata.meta.type}
                             </h3>
-                            <button>BUY</button>
-                            <button>SELL</button>
+                        <input type="text" className="search-box ml-[3%] border-spacing-1 " placeholder="Quantity to be bought" onChange={e => this.setState({...this.state,quantity:e.target.value,loaded:true}) }></input>
+
+                            <a href={`/buy/${this.state.quantity}/${this.state.tsdata.meta.symbol}/${100000*(this.state.tsdata.values[0].high)}`}><button>BUY</button></a>
+                            {/* <a href="./buy"+"" */}
+                            <br></br>
+                            <input type="text" className="search-box ml-[3%] border-spacing-1 " placeholder="STOCK TO BE SOLD" onChange={e => this.setState({...this.state,stocktosell:e.target.value,loaded:true})}></input>
+                            <a href={`/sell/${this.state.stocktosell}`}><button >SELL</button></a>
 
                             <div id="userdashboarddata">
                                     <h4 id="userdashboarditems2">DATE & TIME:</h4>

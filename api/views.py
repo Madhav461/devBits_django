@@ -1,4 +1,4 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render,HttpResponse,redirect,get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from rest_framework.response import Response
 from .serializers import TaskSerializer
 
-# from .models import Task
+from .models import Profile,Stock
 # # Create your views here.
 
 # @api_view(['GET'])
@@ -69,7 +69,12 @@ from .serializers import TaskSerializer
 def Homepage(request):
     if request.method=='GET':
         symbol=request.GET.get('symbol')
-    return render(request,'home.html')
+    
+    user = request.user
+    username = request.user.get_username()
+    money = request.user.profile.money_available
+    stocks = Stock.objects.filter(owner=user)
+    return render(request,'home.html',{'username':username, 'money':money, 'stocks':stocks})
 
 def Loginpage(request):
     if request.method=='POST':
@@ -101,5 +106,30 @@ def Logoutpage(request):
     logout(request)
     return redirect('login')
 
+def Buy(request, quantity, stockname, stockprice):
+    stockprice = stockprice/100000
+    user = request.user
+    
+    buy_status = user.profile.buy(quantity, stockprice)
+   
+    
+    if(buy_status==True):
+        user.save()
+        stock = Stock(name=stockname, quantity=quantity, owner=user, price=stockprice)
+        stock.save()
 
+    return redirect('home')
 
+def Sell(request, stockname):
+    stock = get_object_or_404(Stock, name=stockname, owner=request.user)
+    money_refund = stock.price * stock.quantity
+    print(money_refund)
+    
+    user = request.user
+    user.profile.sell(money_refund)
+    user.save()
+    stock.delete()
+    return redirect('home')
+
+def Purchasefailed(request):
+    return render(request,'purchasefailed.html')
