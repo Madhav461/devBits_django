@@ -117,8 +117,11 @@ def Buy(request, quantity, stockname, stockprice):
         user.save()
         stock = Stock(name=stockname, quantity=quantity, owner=user, price=stockprice)
         stock.save()
+        return redirect('home')
+    else:
+        return redirect('purchasefailed')
 
-    return redirect('home')
+    
 
 def Sell(request, stockname):
     stock = get_object_or_404(Stock, name=stockname, owner=request.user)
