@@ -136,7 +136,7 @@ class LikeButton extends React.Component {
                             </h3>
                         <input type="text" className="search-box ml-[3%] border-spacing-1 " placeholder="Quantity to be bought" onChange={e => this.setState({...this.state,quantity:e.target.value,loaded:true}) }></input>
 
-                            <a href={`/buy/${this.state.quantity}/${this.state.tsdata.meta.symbol}/${100000*(this.state.tsdata.values[0].high)}`}><button>BUY</button></a>
+                            <a href={`/buy/${this.state.quantity}/${this.state.tsdata.meta.symbol}/${Math.ceil(100000*(this.state.tsdata.values[0].high))}`}><button>BUY</button></a>
                             {/* <a href="./buy"+"" */}
                             <br></br>
                             <input type="text" className="search-box ml-[3%] border-spacing-1 " placeholder="STOCK TO BE SOLD" onChange={e => this.setState({...this.state,stocktosell:e.target.value,loaded:true})}></input>
